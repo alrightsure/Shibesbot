@@ -7,4 +7,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "bot.py"]
+RUN ls
+
+CMD ["python", "./app/bot.py"]

@@ -12,7 +12,7 @@ class ShibesBot(discord.Client):
     async def on_message(self, message):
         if message.content == "!shib" or message.content == "!shibe":
             try:
-                shibImage = requests.get("http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true")
+                shibImage = requests.get(os.environ.get('API_URL'))
                 await message.channel.send(shibImage.json()[0])
             except:
                 await message.channel.send("Could not connect to API :(")
