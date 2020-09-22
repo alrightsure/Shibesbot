@@ -13,10 +13,10 @@ pipeline {
                 script {
                     containerExists = sh ( script: "docker ps -a | grep ${CONTAINER_NAME}", returnStatus: true)
                     
-                    if (containerExists) {
+                    if (!containerExists) {
                         containerIsRunning = sh (script: "docker container inspect -f '{{.State.Running}}' ${CONTAINER_NAME}", returnStatus: true)
                         
-                        if (containerIsRunning) {
+                        if (!containerIsRunning) {
                             sh "docker stop ${CONTAINER_NAME}"
                         }
                         
