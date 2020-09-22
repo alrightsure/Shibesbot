@@ -10,7 +10,7 @@ class ShibesBot(discord.Client):
         print('Logged on as {0}!'.format(self.user))
 
     async def on_message(self, message):
-        if message.lower().content == "!shib" or message.lower().content == "!shibe":
+        if message.content.lower().strip() == "!shib" or message.content.lower().strip() == "!shibe":
             try:
                 shibImage = requests.get(os.environ.get('API_URL'))
                 await message.channel.send(shibImage.json()[0])
