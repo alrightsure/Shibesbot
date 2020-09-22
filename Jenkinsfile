@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh "docker run -d -e API_URL=${API_URL} -e DISCORD_TOKEN=${DISCORD_TOKEN} --name ${CONTAINER_NAME} ${IMAGE_NAME}:latest"
+                sh "docker run -d -e API_URL='${API_URL}' -e DISCORD_TOKEN='${DISCORD_TOKEN}' --name ${CONTAINER_NAME} ${IMAGE_NAME}:latest"
             }
         }
     }
